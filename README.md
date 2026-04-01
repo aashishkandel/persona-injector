@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="/Users/aashishkandel/.gemini/antigravity/brain/0708ab81-9575-45d4-b68e-189b30ac7916/ai_personas_banner_terminal_small_v3_1775064060147.png" width="100%" alt="AI-Personas Banner" />
+  <img src="./assets/banner.png" width="100%" alt="AI-Personas Banner" />
 
   # AI-Personas
   
