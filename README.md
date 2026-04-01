@@ -91,6 +91,9 @@ Each persona is more than a simple markdown file. It's a **structured context pa
 |--------|----------|--------|
 | **GitHub Copilot** | `.github/copilot-instructions.md` | Single file with marker-based sections |
 | **Claude Code** | `.claude/rules/persona-*.md` | Individual rule files with `paths:` scoping |
+| **Windsurf** | `.windsurf/rules/persona-*.md` | Multi-file rule deployment |
+| **Cursor** | `.cursor/rules/persona-*.mdc` | Multi-file deployment with `.mdc` format |
+| **Antigravity (Agy)** | `.agents/rules/persona-*.md` | Rule-based agent configuration |
 | **Universal** | `AI_PERSONA.md` | Combined file for any AI tool |
 
 ---
