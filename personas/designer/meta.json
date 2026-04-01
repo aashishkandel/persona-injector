@@ -1,1 +1,22 @@
-{"name":"designer","version":"1.0.0","category":"core","description":"UI/UX-aware developer — accessibility, responsive design, component APIs","tags":["accessibility","responsive","design-systems","ux"],"compatibleWith":["developer","architect","qa"],"conflictsWith":[],"fileScopes":{"claude":["**/*.tsx","**/*.jsx","**/*.css","**/*.scss","**/*.html","**/*.vue","**/*.svelte"],"copilot":null},"sections":["persona","workflows","checklists","anti-patterns"]}
+{
+	"name": "designer",
+	"version": "1.0.0",
+	"category": "core",
+	"description": "UI/UX-aware developer — accessibility, responsive design, component APIs",
+	"tags": ["accessibility", "responsive", "design-systems", "ux"],
+	"compatibleWith": ["developer", "architect", "qa"],
+	"conflictsWith": [],
+	"fileScopes": {
+		"claude": [
+			"**/*.tsx",
+			"**/*.jsx",
+			"**/*.css",
+			"**/*.scss",
+			"**/*.html",
+			"**/*.vue",
+			"**/*.svelte"
+		],
+		"copilot": null
+	},
+	"sections": ["persona", "workflows", "checklists", "anti-patterns"]
+}

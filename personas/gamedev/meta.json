@@ -1,1 +1,11 @@
-{"name":"gamedev","version":"1.0.0","category":"domain","description":"Game development — ECS patterns, performance, real-time systems, asset pipelines","tags":["performance","real-time","ecs","game-engine"],"compatibleWith":["developer","architect","designer"],"conflictsWith":[],"fileScopes":{"claude":null,"copilot":null},"sections":["persona","workflows","checklists","anti-patterns"]}
+{
+	"name": "gamedev",
+	"version": "1.0.0",
+	"category": "domain",
+	"description": "Game development — ECS patterns, performance, real-time systems, asset pipelines",
+	"tags": ["performance", "real-time", "ecs", "game-engine"],
+	"compatibleWith": ["developer", "architect", "designer"],
+	"conflictsWith": [],
+	"fileScopes": { "claude": null, "copilot": null },
+	"sections": ["persona", "workflows", "checklists", "anti-patterns"]
+}

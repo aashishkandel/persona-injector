@@ -1,16 +1,16 @@
-import { defineConfig } from 'tsup';
+import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ['src/cli.ts', 'src/index.ts'],
-  format: ['esm'],
-  target: 'node18',
-  clean: true,
-  dts: false,
-  sourcemap: false,
-  splitting: true,
-  minify: false,
-  shims: false,
-  banner: {
-    js: '',
-  },
+	entry: ["src/cli.ts", "src/index.ts"],
+	format: ["esm"],
+	target: "node18",
+	clean: true,
+	dts: false,
+	sourcemap: false,
+	splitting: true,
+	minify: false,
+	shims: false,
+	banner: {
+		js: "",
+	},
 });

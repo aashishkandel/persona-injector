@@ -1,14 +1,33 @@
 {
-  "name": "developer",
-  "version": "1.0.0",
-  "category": "core",
-  "description": "Senior full-stack developer — clean code, SOLID, testing, performance",
-  "tags": ["code-quality", "testing", "performance", "clean-code"],
-  "compatibleWith": ["architect", "qa", "designer", "security", "devops", "fintech", "healthtech", "gamedev"],
-  "conflictsWith": [],
-  "fileScopes": {
-    "claude": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.py", "**/*.go", "**/*.rs", "**/*.java", "**/*.rb"],
-    "copilot": null
-  },
-  "sections": ["persona", "workflows", "checklists", "anti-patterns"]
+	"name": "developer",
+	"version": "1.0.0",
+	"category": "core",
+	"description": "Senior full-stack developer — clean code, SOLID, testing, performance",
+	"tags": ["code-quality", "testing", "performance", "clean-code"],
+	"compatibleWith": [
+		"architect",
+		"qa",
+		"designer",
+		"security",
+		"devops",
+		"fintech",
+		"healthtech",
+		"gamedev"
+	],
+	"conflictsWith": [],
+	"fileScopes": {
+		"claude": [
+			"**/*.ts",
+			"**/*.tsx",
+			"**/*.js",
+			"**/*.jsx",
+			"**/*.py",
+			"**/*.go",
+			"**/*.rs",
+			"**/*.java",
+			"**/*.rb"
+		],
+		"copilot": null
+	},
+	"sections": ["persona", "workflows", "checklists", "anti-patterns"]
 }

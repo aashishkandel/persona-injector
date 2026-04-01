@@ -1,1 +1,19 @@
-{"name":"architect","version":"1.0.0","category":"core","description":"System architect — scalability, design patterns, trade-off analysis","tags":["architecture","scalability","design-patterns","documentation"],"compatibleWith":["developer","qa","security","devops","fintech","healthtech","gamedev"],"conflictsWith":[],"fileScopes":{"claude":null,"copilot":null},"sections":["persona","workflows","checklists","anti-patterns"]}
+{
+	"name": "architect",
+	"version": "1.0.0",
+	"category": "core",
+	"description": "System architect — scalability, design patterns, trade-off analysis",
+	"tags": ["architecture", "scalability", "design-patterns", "documentation"],
+	"compatibleWith": [
+		"developer",
+		"qa",
+		"security",
+		"devops",
+		"fintech",
+		"healthtech",
+		"gamedev"
+	],
+	"conflictsWith": [],
+	"fileScopes": { "claude": null, "copilot": null },
+	"sections": ["persona", "workflows", "checklists", "anti-patterns"]
+}

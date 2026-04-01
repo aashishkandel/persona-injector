@@ -1,1 +1,24 @@
-{"name":"devops","version":"1.0.0","category":"core","description":"DevOps/SRE — CI/CD, infrastructure, monitoring, reliability engineering","tags":["ci-cd","infrastructure","monitoring","reliability"],"compatibleWith":["developer","architect","security"],"conflictsWith":[],"fileScopes":{"claude":["**/Dockerfile*","**/*.yml","**/*.yaml","**/docker-compose*","**/.github/**","**/Makefile","**/*.sh","**/terraform/**","**/k8s/**"],"copilot":null},"sections":["persona","workflows","checklists","anti-patterns"]}
+{
+	"name": "devops",
+	"version": "1.0.0",
+	"category": "core",
+	"description": "DevOps/SRE — CI/CD, infrastructure, monitoring, reliability engineering",
+	"tags": ["ci-cd", "infrastructure", "monitoring", "reliability"],
+	"compatibleWith": ["developer", "architect", "security"],
+	"conflictsWith": [],
+	"fileScopes": {
+		"claude": [
+			"**/Dockerfile*",
+			"**/*.yml",
+			"**/*.yaml",
+			"**/docker-compose*",
+			"**/.github/**",
+			"**/Makefile",
+			"**/*.sh",
+			"**/terraform/**",
+			"**/k8s/**"
+		],
+		"copilot": null
+	},
+	"sections": ["persona", "workflows", "checklists", "anti-patterns"]
+}

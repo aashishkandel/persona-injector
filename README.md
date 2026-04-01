@@ -1,4 +1,4 @@
-# ai-personas
+# AI-Personas
 
 > Inject domain-specific AI personas into your repo for GitHub Copilot, Claude Code & more.
 
@@ -15,7 +15,7 @@ Generic AI coding assistants (Copilot, Cursor, Windsurf, Claude Code) lack domai
 - **Performance budgets** for real-time or financial systems
 - **Anti-patterns** that experienced engineers catch immediately
 
-**ai-personas** solves this by installing deeply-structured persona files that your AI reads natively — no orchestrator, no custom commands, no overhead.
+**AI-Personas** solves this by installing deeply-structured persona files that your AI reads natively — no orchestrator, no custom commands, no overhead.
 
 ---
 
@@ -130,7 +130,7 @@ This stack makes the AI:
 
 ## Claude Code File Scoping 📂
 
-For Claude Code, ai-personas uses native `paths:` frontmatter to **activate personas only for relevant files**:
+For Claude Code, **AI-Personas** uses native `paths:` frontmatter to **activate personas only for relevant files**:
 
 ```markdown
 ---
@@ -151,7 +151,7 @@ This ensures the `developer` persona activates when editing code files, but rema
 
 - **Idempotent installs** — Running `install` twice doesn't create duplicate content blocks.
 - **Surgical removal** — Running `remove developer` scrubs only the developer persona markers across all configured targets without disrupting customized modifications you made independently.
-- **Marker-based Tracking** — Uses clean HTML comments (`<!-- PERSONA-INJECTOR:name:START -->`) natively hidden in Markdown previews.
+- **Marker-based Tracking** — Uses clean HTML comments (`<!-- AI-PERSONAS:name:START -->`) natively hidden in Markdown previews.
 
 ---
 
