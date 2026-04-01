@@ -55,6 +55,7 @@
     "url": "https://github.com/aashishkandel/persona-injector/issues"
   },
   "dependencies": {
+    "@clack/prompts": "^1.2.0",
     "commander": "^14.0.3",
     "picocolors": "^1.1.1",
     "yocto-spinner": "^1.1.0"

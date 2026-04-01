@@ -100,8 +100,10 @@ export async function injectPersonas(
     }
   }
 
-  // Update README.md
-  await updateReadme(cwd, options.dryRun);
+  // Update README.md only if the generic AI_PERSONA.md target is included
+  if (targets.some(t => t.id === 'universal')) {
+    await updateReadme(cwd, options.dryRun);
+  }
 
   return results;
 }

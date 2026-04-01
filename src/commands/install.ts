@@ -1,9 +1,11 @@
 // ── Install Command Handler ──
 
+import * as p from '@clack/prompts';
 import { log, createSpinner, pc } from '../logger.js';
-import { validatePersonaNames, getAllPersonaNames } from '../registry.js';
+import { validatePersonaNames, getAllPersonaNames, getAvailablePersonas } from '../registry.js';
 import { checkCompatibility } from '../composer.js';
 import { injectPersonas } from '../injector.js';
+import { TARGETS } from '../targets.js';
 import type { InstallOptions } from '../types.js';
 
 export async function handleInstall(
@@ -15,7 +17,43 @@ export async function handleInstall(
     personaNames = await getAllPersonaNames();
   }
 
-  if (personaNames.length === 0) {
+  if (personaNames.length === 0 && !options.all) {
+    p.intro(pc.bgCyan(pc.black(' persona-injector ')));
+
+    const available = await getAvailablePersonas();
+    const selectedPersonas = await p.multiselect({
+      message: 'Which personas would you like to install?',
+      options: available.map((a) => ({ value: a.name, label: pc.cyan(a.name), hint: a.description })),
+      required: true,
+    });
+
+    if (p.isCancel(selectedPersonas)) {
+      p.cancel('Operation cancelled.');
+      process.exit(0);
+    }
+
+    const targetChoices = Object.values(TARGETS).map((t) => ({
+      value: t.id,
+      label: t.name,
+      hint: t.description,
+    }));
+
+    const selectedTargets = await p.multiselect({
+      message: 'Which IDEs or systems do you use? (Select targets to inject into)',
+      options: targetChoices,
+      required: true,
+    });
+
+    if (p.isCancel(selectedTargets)) {
+      p.cancel('Operation cancelled.');
+      process.exit(0);
+    }
+
+    personaNames = selectedPersonas as string[];
+    options.targets = selectedTargets as string[];
+
+    p.outro('Configuration complete! Starting injection...');
+  } else if (personaNames.length === 0) {
     log.error('No personas specified. Use persona names or --all flag.');
     log.dim('Run `persona-injector list` to see available personas.');
     process.exit(1);
