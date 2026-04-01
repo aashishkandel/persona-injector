@@ -5,5 +5,7 @@ tsup.config.ts
 .gitignore
 .DS_Store
 *.tsbuildinfo
+*.js.map
 coverage/
 .github/
+node_modules/
