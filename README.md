@@ -4,10 +4,6 @@
 
 **Zero-overhead, workflow-embedded context systems** with checklists, anti-patterns, decision trees, and file-scoped rules — so your AI assistant thinks like a Senior Developer, Architect, QA Engineer, Security Expert, or domain specialist.
 
-```bash
-npx persona-injector install developer architect security
-```
-
 ---
 
 ## Why?
@@ -23,7 +19,9 @@ Generic AI coding assistants (Copilot, Cursor, Windsurf, Claude Code) lack domai
 
 ---
 
-## Quick Start
+## Quick Start 🚀
+
+No global installation or bloat required. Just use `npx` directly in any repository:
 
 ```bash
 # Install specific personas
@@ -48,9 +46,12 @@ npx persona-injector remove developer
 npx persona-injector remove --all
 ```
 
+**What to do next?**
+Once installed, just open GitHub Copilot Chat, open Windsurf, or run `claude` in your terminal. They will automatically detect and ingest the newly injected persona files without any extra configuration!
+
 ---
 
-## Available Personas
+## Available Personas 🎭
 
 ### Core Roles
 
@@ -73,7 +74,7 @@ npx persona-injector remove --all
 
 ---
 
-## What Gets Installed
+## What Gets Installed 📦
 
 Each persona is more than a simple markdown file. It's a **structured context package** containing:
 
@@ -94,32 +95,40 @@ Each persona is more than a simple markdown file. It's a **structured context pa
 
 ---
 
-## Multi-Persona Stacking
+## Multi-Persona Stacking & Intelligence 🧠
 
 Install multiple personas and they're **simultaneously active** — your AI thinks from all perspectives at once:
 
-```bash
-npx persona-injector install developer security fintech
+```diff
+$ npx persona-injector install developer security fintech
+
++   ✓ Loaded 3 personas: developer, security, fintech
+  
+!   ℹ Composition Note:
+!     developer and security share focus areas (code-quality). 
+!     Both perspectives will be active for comprehensive coverage.
+
+  Injecting into GitHub Copilot...
++     ✓ .github/copilot-instructions.md (appended)
+
+  Injecting into Claude Code...
++     ✓ persona-developer.md (created)
++     ✓ persona-security.md (created)
++     ✓ persona-fintech.md (created)
++     ✓ _persona-manifest.md (created)
+
++   ✓ Done! 3 personas → 14 files injected.
+  Your AI assistant now thinks as Developer + Security + Fintech.
 ```
 
-This makes the AI:
+This stack makes the AI:
 - Write clean, well-tested code (developer)
 - Check for OWASP vulnerabilities (security)
 - Use integer arithmetic for money and enforce audit trails (fintech)
 
-### Composition Intelligence
-
-The CLI automatically detects when personas have overlapping concerns and warns you:
-
-```
-ℹ Composition Note:
-  developer + architect both define code review criteria —
-  both perspectives will be active for comprehensive reviews.
-```
-
 ---
 
-## Claude Code File Scoping
+## Claude Code File Scoping 📂
 
 For Claude Code, persona-injector uses native `paths:` frontmatter to **activate personas only for relevant files**:
 
@@ -134,20 +143,19 @@ paths:
 [...]
 ```
 
-This means the developer persona activates when editing code files, but not when editing docs or config.
+This ensures the `developer` persona activates when editing code files, but remains quiet when you are just modifying markdown documentation or generic config files.
 
 ---
 
-## Idempotent & Surgical
+## Idempotent & Surgical 🔪
 
-- **Idempotent installs** — Running `install` twice doesn't create duplicates
-- **Surgical removal** — `remove developer` strips only the developer persona, leaving others intact
-- **Marker-based** — Uses HTML comments (`<!-- PERSONA-INJECTOR:name:START -->`) to track sections
-- **Non-destructive** — Existing content in target files is preserved
+- **Idempotent installs** — Running `install` twice doesn't create duplicate content blocks.
+- **Surgical removal** — Running `remove developer` scrubs only the developer persona markers across all configured targets without disrupting customized modifications you made independently.
+- **Marker-based Tracking** — Uses clean HTML comments (`<!-- PERSONA-INJECTOR:name:START -->`) natively hidden in Markdown previews.
 
+---
 
-
-## Commands
+## Commands Reference 💻
 
 ### `install [personas...] [options]`
 
@@ -173,18 +181,18 @@ This means the developer persona activates when editing code files, but not when
 
 ### `info <persona>`
 
-Preview a persona's full content before installing.
+Preview a persona's full markdown content natively in your terminal before installing.
 
 ### `status`
 
-Show currently installed personas and target files.
+Show currently configured personas, active overlap schemas, and target files detected in the project.
 
 ---
 
 ## Requirements
 
-- **Node.js** 18+ (uses native `fetch` and ESM)
-- **npm** 7+ (for `npx` support)
+- **Node.js** 18+ (uses native `fetch` and ESM modules)
+- **npm** 7+ (for npx execution execution)
 
 ---
 
