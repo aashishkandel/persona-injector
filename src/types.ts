@@ -1,4 +1,4 @@
-// ── Type Definitions for persona-injector ──
+// ── Type Definitions for ai-personas ──
 
 export interface PersonaMeta {
   name: string;

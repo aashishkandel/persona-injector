@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// ── persona-injector CLI ──
+// ── ai-personas CLI ──
 // Inject domain-specific AI personas into your repo for Copilot, Claude Code & more.
 
 import { Command } from 'commander';
@@ -10,7 +10,7 @@ import { PACKAGE_VERSION } from './constants.js';
 const program = new Command();
 
 program
-  .name('persona-injector')
+  .name('ai-personas')
   .description(
     'Inject domain-specific AI personas into your repo for GitHub Copilot, Claude Code & more.\n' +
     'Ships workflow-embedded context with checklists, anti-patterns, and file-scoped rules.'

@@ -4,7 +4,7 @@ export class PersonaNotFoundError extends Error {
   public readonly personaName: string;
 
   constructor(personaName: string) {
-    super(`Persona "${personaName}" not found. Run \`persona-injector list\` to see available personas.`);
+    super(`Persona "${personaName}" not found. Run \`ai-personas list\` to see available personas.`);
     this.name = 'PersonaNotFoundError';
     this.personaName = personaName;
   }

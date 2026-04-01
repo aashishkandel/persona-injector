@@ -18,7 +18,7 @@ export async function handleInstall(
   }
 
   if (personaNames.length === 0 && !options.all) {
-    p.intro(pc.bgCyan(pc.black(' persona-injector ')));
+    p.intro(pc.bgCyan(pc.black(' ai-personas ')));
 
     const available = await getAvailablePersonas();
     const selectedPersonas = await p.multiselect({
@@ -55,7 +55,7 @@ export async function handleInstall(
     p.outro('Configuration complete! Starting injection...');
   } else if (personaNames.length === 0) {
     log.error('No personas specified. Use persona names or --all flag.');
-    log.dim('Run `persona-injector list` to see available personas.');
+    log.dim('Run `ai-personas list` to see available personas.');
     process.exit(1);
   }
 
@@ -66,7 +66,7 @@ export async function handleInstall(
     for (const name of invalid) {
       log.error(`Persona "${name}" not found.`);
     }
-    log.dim('Run `persona-injector list` to see available personas.');
+    log.dim('Run `ai-personas list` to see available personas.');
     if (valid.length === 0) process.exit(1);
   }
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { composeForSingleFile, composeForClaudeMultiFile, checkCompatibility } from '../src/composer.js';
+import { composeForSingleFile, composeForMultiFile, checkCompatibility } from '../src/composer.js';
 
 describe('Composer', () => {
   it('should compose a single persona for single-file target', async () => {
@@ -20,7 +20,7 @@ describe('Composer', () => {
   });
 
   it('should generate Claude multi-file output with proper filenames', async () => {
-    const { files } = await composeForClaudeMultiFile(['developer']);
+    const { files } = await composeForMultiFile(['developer'], 'claude');
     expect(files.has('persona-developer.md')).toBe(true);
     expect(files.has('persona-developer-workflows.md')).toBe(true);
     expect(files.has('persona-developer-checklists.md')).toBe(true);
@@ -29,7 +29,7 @@ describe('Composer', () => {
   });
 
   it('should include paths frontmatter in Claude files when scoped', async () => {
-    const { files } = await composeForClaudeMultiFile(['developer']);
+    const { files } = await composeForMultiFile(['developer'], 'claude');
     const personaFile = files.get('persona-developer.md')!;
     expect(personaFile).toContain('---');
     expect(personaFile).toContain('paths:');
@@ -37,7 +37,7 @@ describe('Composer', () => {
   });
 
   it('should not include paths frontmatter for globally-scoped personas', async () => {
-    const { files } = await composeForClaudeMultiFile(['architect']);
+    const { files } = await composeForMultiFile(['architect'], 'claude');
     const personaFile = files.get('persona-architect.md')!;
     expect(personaFile).not.toContain('paths:');
   });

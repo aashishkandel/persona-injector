@@ -1,4 +1,4 @@
-// ── Constants for persona-injector ──
+// ── Constants for ai-personas ──
 
 export const MARKER_START = (persona: string): string =>
   `<!-- PERSONA-INJECTOR:${persona}:START -->`;
@@ -18,7 +18,7 @@ export const README_POINTER = [
   '',
   '---',
   '',
-  '> 🤖 **AI Context:** This repository uses injected AI personas via [persona-injector](https://github.com/aashishkandel/persona-injector). AI assistants should review [AI_PERSONA.md](./AI_PERSONA.md) before writing code.',
+  '> 🤖 **AI Context:** This repository uses injected AI personas via [ai-personas](https://github.com/aashishkandel/ai-personas). AI assistants should review [AI_PERSONA.md](./AI_PERSONA.md) before writing code.',
   '',
   README_MARKER_END,
 ].join('\n');

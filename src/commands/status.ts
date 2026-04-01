@@ -75,7 +75,7 @@ export async function handleStatus(options: { cwd?: string }): Promise<void> {
 
   if (installed.size === 0) {
     log.warn('No personas installed in this project.');
-    log.dim('Run `persona-injector install <persona>` to get started.');
+    log.dim('Run `ai-personas install <persona>` to get started.');
     log.blank();
     return;
   }

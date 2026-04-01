@@ -1,5 +1,5 @@
 // ── Programmatic API ──
-// Use persona-injector as a library, not just a CLI.
+// Use ai-personas as a library, not just a CLI.
 
 export { injectPersonas } from './injector.js';
 export { removePersonas } from './cleaner.js';

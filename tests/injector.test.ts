@@ -9,7 +9,7 @@ describe('Injector', () => {
   let testDir: string;
 
   beforeEach(async () => {
-    testDir = await mkdtemp(join(tmpdir(), 'persona-injector-test-'));
+    testDir = await mkdtemp(join(tmpdir(), 'ai-personas-test-'));
   });
 
   afterEach(async () => {

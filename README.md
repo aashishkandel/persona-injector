@@ -1,4 +1,4 @@
-# persona-injector
+# ai-personas
 
 > Inject domain-specific AI personas into your repo for GitHub Copilot, Claude Code & more.
 
@@ -15,7 +15,7 @@ Generic AI coding assistants (Copilot, Cursor, Windsurf, Claude Code) lack domai
 - **Performance budgets** for real-time or financial systems
 - **Anti-patterns** that experienced engineers catch immediately
 
-**persona-injector** solves this by installing deeply-structured persona files that your AI reads natively — no orchestrator, no custom commands, no overhead.
+**ai-personas** solves this by installing deeply-structured persona files that your AI reads natively — no orchestrator, no custom commands, no overhead.
 
 ---
 
@@ -25,25 +25,25 @@ No global installation or bloat required. Just use `npx` directly in any reposit
 
 ```bash
 # Install specific personas
-npx persona-injector install developer architect qa
+npx ai-personas install developer architect qa
 
 # Install all personas
-npx persona-injector install --all
+npx ai-personas install --all
 
 # See what's available
-npx persona-injector list
+npx ai-personas list
 
 # Preview a persona before installing
-npx persona-injector info security
+npx ai-personas info security
 
 # Check what's installed
-npx persona-injector status
+npx ai-personas status
 
 # Remove a specific persona
-npx persona-injector remove developer
+npx ai-personas remove developer
 
 # Remove all
-npx persona-injector remove --all
+npx ai-personas remove --all
 ```
 
 **What to do next?**
@@ -100,7 +100,7 @@ Each persona is more than a simple markdown file. It's a **structured context pa
 Install multiple personas and they're **simultaneously active** — your AI thinks from all perspectives at once:
 
 ```diff
-$ npx persona-injector install developer security fintech
+$ npx ai-personas install developer security fintech
 
 +   ✓ Loaded 3 personas: developer, security, fintech
   
@@ -130,7 +130,7 @@ This stack makes the AI:
 
 ## Claude Code File Scoping 📂
 
-For Claude Code, persona-injector uses native `paths:` frontmatter to **activate personas only for relevant files**:
+For Claude Code, ai-personas uses native `paths:` frontmatter to **activate personas only for relevant files**:
 
 ```markdown
 ---

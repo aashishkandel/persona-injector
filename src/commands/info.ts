@@ -45,7 +45,7 @@ export async function handleInfo(personaName: string): Promise<void> {
     printIndented(content.antiPatterns, 30);
 
     log.blank();
-    log.dim(`Install: persona-injector install ${meta.name}`);
+    log.dim(`Install: ai-personas install ${meta.name}`);
     log.blank();
   } catch (err) {
     if (err instanceof PersonaNotFoundError) {

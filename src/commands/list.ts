@@ -48,7 +48,7 @@ export async function handleList(options: { json?: boolean; verbose?: boolean })
   }
 
   log.blank();
-  log.dim(`Install: persona-injector install <name> [<name2> ...]`);
-  log.dim(`Install all: persona-injector install --all`);
+  log.dim(`Install: ai-personas install <name> [<name2> ...]`);
+  log.dim(`Install all: ai-personas install --all`);
   log.blank();
 }

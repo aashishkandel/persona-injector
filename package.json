@@ -1,10 +1,10 @@
 {
-  "name": "persona-injector",
+  "name": "ai-personas",
   "version": "1.0.0",
   "description": "Inject domain-specific AI personas into your repo for GitHub Copilot, Claude Code & more. Workflow-embedded context systems with checklists, anti-patterns, and file-scoped rules.",
   "type": "module",
   "bin": {
-    "persona-injector": "./dist/cli.js"
+    "ai-personas": "./dist/cli.js"
   },
   "main": "./dist/index.js",
   "exports": {
@@ -48,11 +48,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aashishkandel/persona-injector.git"
+    "url": "https://github.com/aashishkandel/ai-personas.git"
   },
-  "homepage": "https://github.com/aashishkandel/persona-injector#readme",
+  "homepage": "https://github.com/aashishkandel/ai-personas#readme",
   "bugs": {
-    "url": "https://github.com/aashishkandel/persona-injector/issues"
+    "url": "https://github.com/aashishkandel/ai-personas/issues"
   },
   "dependencies": {
     "@clack/prompts": "^1.2.0",

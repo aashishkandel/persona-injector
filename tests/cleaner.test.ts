@@ -10,7 +10,7 @@ describe('Cleaner', () => {
   let testDir: string;
 
   beforeEach(async () => {
-    testDir = await mkdtemp(join(tmpdir(), 'persona-injector-clean-'));
+    testDir = await mkdtemp(join(tmpdir(), 'ai-personas-clean-'));
   });
 
   afterEach(async () => {
