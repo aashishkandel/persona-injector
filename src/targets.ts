@@ -15,6 +15,24 @@ export const TARGETS: Record<string, InjectionTarget> = {
     type: 'multi-file',
     description: '.claude/rules/persona-*.md',
   },
+  cursor: {
+    id: 'cursor',
+    name: 'Cursor',
+    type: 'multi-file',
+    description: '.cursor/rules/persona-*.mdc',
+  },
+  windsurf: {
+    id: 'windsurf',
+    name: 'Windsurf',
+    type: 'multi-file',
+    description: '.windsurf/rules/persona-*.md',
+  },
+  agy: {
+    id: 'agy',
+    name: 'Antigravity (Agy)',
+    type: 'multi-file',
+    description: '.agents/rules/persona-*.md',
+  },
   universal: {
     id: 'universal',
     name: 'Universal (AI_PERSONA.md)',

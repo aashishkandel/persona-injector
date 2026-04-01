@@ -12,6 +12,7 @@ import {
   MANIFEST_MARKER_START,
   MANIFEST_MARKER_END,
   PACKAGE_VERSION,
+  MULTI_FILE_MANIFEST_FILE,
 } from './constants.js';
 import { loadPersonaContent, loadPersonaMeta } from './registry.js';
 
@@ -131,11 +132,13 @@ export async function composeForSingleFile(
 }
 
 /**
- * Generate individual rule files for Claude Code's multi-file structure.
+ * Generate individual rule files for multi-file structures.
  * Returns a map of filename → content.
  */
-export async function composeForClaudeMultiFile(
-  personaNames: string[]
+export async function composeForMultiFile(
+  personaNames: string[],
+  targetId: string,
+  extension: string = '.md'
 ): Promise<{ files: Map<string, string>; warnings: CompositionWarning[] }> {
   const contents = await Promise.all(personaNames.map((n) => loadPersonaContent(n)));
   const warnings = await checkCompatibility(personaNames);
@@ -143,11 +146,13 @@ export async function composeForClaudeMultiFile(
 
   for (const content of contents) {
     const { meta } = content;
-    const scopeFrontmatter = meta.fileScopes.claude
+    const fileScopes = meta.fileScopes as Record<string, string[] | null | undefined>;
+    const targetScopes = fileScopes[targetId] || fileScopes.claude;
+    const scopeFrontmatter = targetScopes
       ? [
           '---',
           'paths:',
-          ...meta.fileScopes.claude.map((p) => `  - "${p}"`),
+          ...targetScopes.map((p) => `  - "${p}"`),
           '---',
           '',
         ].join('\n')
@@ -155,25 +160,25 @@ export async function composeForClaudeMultiFile(
 
     // Main persona file
     files.set(
-      `persona-${meta.name}.md`,
+      `persona-${meta.name}${extension}`,
       scopeFrontmatter + content.persona
     );
 
     // Workflows
     files.set(
-      `persona-${meta.name}-workflows.md`,
+      `persona-${meta.name}-workflows${extension}`,
       scopeFrontmatter + `# ${capitalize(meta.name)} — Workflows\n\n` + content.workflows
     );
 
     // Checklists
     files.set(
-      `persona-${meta.name}-checklists.md`,
+      `persona-${meta.name}-checklists${extension}`,
       scopeFrontmatter + `# ${capitalize(meta.name)} — Quality Gates & Checklists\n\n` + content.checklists
     );
 
     // Anti-patterns
     files.set(
-      `persona-${meta.name}-anti-patterns.md`,
+      `persona-${meta.name}-anti-patterns${extension}`,
       scopeFrontmatter + `# ${capitalize(meta.name)} — Anti-Patterns\n\n` + content.antiPatterns
     );
   }
@@ -196,7 +201,7 @@ export async function composeForClaudeMultiFile(
     '',
     ...[...files.keys()].map((f) => `- \`${f}\``),
   ].join('\n');
-  files.set('_persona-manifest.md', manifestContent);
+  files.set(MULTI_FILE_MANIFEST_FILE, manifestContent);
 
   return { files, warnings };
 }

@@ -11,6 +11,9 @@ export interface PersonaMeta {
   fileScopes: {
     claude: string[] | null;
     copilot: string[] | null;
+    cursor?: string[] | null;
+    windsurf?: string[] | null;
+    agy?: string[] | null;
   };
   sections: string[];
 }

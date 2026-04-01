@@ -11,11 +11,14 @@ import {
   COPILOT_INSTRUCTIONS_PATH,
   UNIVERSAL_PERSONA_PATH,
   CLAUDE_RULES_DIR,
+  CURSOR_RULES_DIR,
+  WINDSURF_RULES_DIR,
+  AGY_RULES_DIR,
   README_PATH,
   README_MARKER_START,
   README_MARKER_END,
-  CLAUDE_PERSONA_PREFIX,
-  CLAUDE_MANIFEST_FILE,
+  MULTI_FILE_PERSONA_PREFIX,
+  MULTI_FILE_MANIFEST_FILE,
 } from './constants.js';
 import { readFileSafe, writeFileSafe, deleteFile, removeDirIfEmpty, fileExists } from './fs-utils.js';
 
@@ -39,9 +42,16 @@ export async function removePersonas(
     results.push(...singleResults);
   }
 
-  // Remove from Claude multi-file
-  const claudeResults = await removeFromClaude(personaNames, join(cwd, CLAUDE_RULES_DIR));
-  results.push(...claudeResults);
+  // Remove from multi-file targets
+  for (const { path, targetId } of [
+    { path: CLAUDE_RULES_DIR, targetId: 'claude' },
+    { path: CURSOR_RULES_DIR, targetId: 'cursor' },
+    { path: WINDSURF_RULES_DIR, targetId: 'windsurf' },
+    { path: AGY_RULES_DIR, targetId: 'agy' },
+  ]) {
+    const multiResults = await removeFromMultiFile(personaNames, join(cwd, path), targetId);
+    results.push(...multiResults);
+  }
 
   // Clean up README pointer if no personas remain
   await cleanReadme(cwd, results);
@@ -141,22 +151,23 @@ async function removeFromSingleFile(
 }
 
 /**
- * Remove persona files from Claude's rules directory.
+ * Remove persona files from a multi-file rules directory.
  */
-async function removeFromClaude(
+async function removeFromMultiFile(
   personaNames: string[],
-  rulesDir: string
+  rulesDir: string,
+  targetId: string
 ): Promise<RemovalResult[]> {
   const results: RemovalResult[] = [];
 
   if (!(await fileExists(rulesDir))) {
     for (const name of personaNames) {
       results.push({
-        target: 'claude',
+        target: targetId,
         persona: name,
         status: 'skipped',
         filePath: rulesDir,
-        message: 'Claude rules directory does not exist',
+        message: 'Rules directory does not exist',
       });
     }
     return results;
@@ -165,18 +176,18 @@ async function removeFromClaude(
   const entries = await readdir(rulesDir);
 
   for (const name of personaNames) {
-    const prefix = `${CLAUDE_PERSONA_PREFIX}${name}`;
+    const prefix = `${MULTI_FILE_PERSONA_PREFIX}${name}`;
     const matchingFiles = entries.filter(
-      (e) => e.startsWith(prefix) && e.endsWith('.md')
+      (e) => e.startsWith(prefix) && (e.endsWith('.md') || e.endsWith('.mdc'))
     );
 
     if (matchingFiles.length === 0) {
       results.push({
-        target: 'claude',
+        target: targetId,
         persona: name,
         status: 'skipped',
         filePath: rulesDir,
-        message: 'No Claude rule files found for this persona',
+        message: 'No rule files found for this persona',
       });
       continue;
     }
@@ -185,7 +196,7 @@ async function removeFromClaude(
       const filePath = join(rulesDir, file);
       await deleteFile(filePath);
       results.push({
-        target: 'claude',
+        target: targetId,
         persona: name,
         status: 'deleted',
         filePath,
@@ -196,12 +207,12 @@ async function removeFromClaude(
   // Check if any persona files remain; if not, remove manifest and clean dir
   const remainingEntries = await readdir(rulesDir);
   const remainingPersonaFiles = remainingEntries.filter(
-    (e) => e.startsWith(CLAUDE_PERSONA_PREFIX) && e.endsWith('.md')
+    (e) => e.startsWith(MULTI_FILE_PERSONA_PREFIX) && (e.endsWith('.md') || e.endsWith('.mdc'))
   );
 
   if (remainingPersonaFiles.length === 0) {
     // Delete manifest
-    const manifestPath = join(rulesDir, CLAUDE_MANIFEST_FILE);
+    const manifestPath = join(rulesDir, MULTI_FILE_MANIFEST_FILE);
     await deleteFile(manifestPath);
 
     // Try to clean up empty directories

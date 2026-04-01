@@ -9,12 +9,15 @@ import {
   COPILOT_INSTRUCTIONS_PATH,
   UNIVERSAL_PERSONA_PATH,
   CLAUDE_RULES_DIR,
+  CURSOR_RULES_DIR,
+  WINDSURF_RULES_DIR,
+  AGY_RULES_DIR,
   README_PATH,
   README_POINTER,
   README_MARKER_START,
 } from './constants.js';
 import { readFileSafe, writeFileSafe, fileExists } from './fs-utils.js';
-import { composeForSingleFile, composeForClaudeMultiFile } from './composer.js';
+import { composeForSingleFile, composeForMultiFile } from './composer.js';
 import { resolveTargets } from './targets.js';
 
 /**
@@ -41,12 +44,47 @@ export async function injectPersonas(
         break;
       }
       case 'claude': {
-        const claudeResults = await injectClaudeMultiFile(
+        const claudeResults = await injectMultiFileTarget(
           personaNames,
           join(cwd, CLAUDE_RULES_DIR),
+          'claude',
+          '.md',
           options
         );
         results.push(...claudeResults);
+        break;
+      }
+      case 'cursor': {
+        const cursorResults = await injectMultiFileTarget(
+          personaNames,
+          join(cwd, CURSOR_RULES_DIR),
+          'cursor',
+          '.mdc',
+          options
+        );
+        results.push(...cursorResults);
+        break;
+      }
+      case 'windsurf': {
+        const windsurfResults = await injectMultiFileTarget(
+          personaNames,
+          join(cwd, WINDSURF_RULES_DIR),
+          'windsurf',
+          '.md',
+          options
+        );
+        results.push(...windsurfResults);
+        break;
+      }
+      case 'agy': {
+        const agyResults = await injectMultiFileTarget(
+          personaNames,
+          join(cwd, AGY_RULES_DIR),
+          'agy',
+          '.md',
+          options
+        );
+        results.push(...agyResults);
         break;
       }
       case 'universal': {
@@ -154,22 +192,24 @@ async function injectSingleFile(
 }
 
 /**
- * Inject into Claude Code's multi-file structure.
+ * Inject into a multi-file structure target.
  */
-async function injectClaudeMultiFile(
+async function injectMultiFileTarget(
   personaNames: string[],
   rulesDir: string,
+  targetId: string,
+  extension: string,
   options: InstallOptions
 ): Promise<InjectionResult[]> {
   const results: InjectionResult[] = [];
-  const { files } = await composeForClaudeMultiFile(personaNames);
+  const { files } = await composeForMultiFile(personaNames, targetId, extension);
 
   for (const [fileName, content] of files) {
     const filePath = join(rulesDir, fileName);
 
     if (options.dryRun) {
       results.push({
-        target: 'claude',
+        target: targetId,
         persona: extractPersonaFromFileName(fileName),
         status: 'skipped',
         filePath,
@@ -182,7 +222,7 @@ async function injectClaudeMultiFile(
     await writeFileSafe(filePath, content);
 
     results.push({
-      target: 'claude',
+      target: targetId,
       persona: extractPersonaFromFileName(fileName),
       status: existed ? 'replaced' : 'created',
       filePath,
@@ -231,7 +271,7 @@ function extractInstalledPersonas(content: string): string[] {
 }
 
 /**
- * Extract persona name from Claude rule file name.
+ * Extract persona name from multi-file rule file name.
  */
 function extractPersonaFromFileName(fileName: string): string {
   if (fileName.startsWith('_')) return 'manifest';

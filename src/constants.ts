@@ -28,9 +28,12 @@ export const PACKAGE_VERSION = '1.0.0';
 export const PERSONAS_DIR_NAME = 'personas';
 
 export const CLAUDE_RULES_DIR = '.claude/rules';
+export const CURSOR_RULES_DIR = '.cursor/rules';
+export const WINDSURF_RULES_DIR = '.windsurf/rules';
+export const AGY_RULES_DIR = '.agents/rules';
 export const COPILOT_INSTRUCTIONS_PATH = '.github/copilot-instructions.md';
 export const UNIVERSAL_PERSONA_PATH = 'AI_PERSONA.md';
 export const README_PATH = 'README.md';
 
-export const CLAUDE_PERSONA_PREFIX = 'persona-';
-export const CLAUDE_MANIFEST_FILE = '_persona-manifest.md';
+export const MULTI_FILE_PERSONA_PREFIX = 'persona-';
+export const MULTI_FILE_MANIFEST_FILE = '_persona-manifest.md';

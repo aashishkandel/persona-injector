@@ -8,7 +8,10 @@ import {
   COPILOT_INSTRUCTIONS_PATH,
   UNIVERSAL_PERSONA_PATH,
   CLAUDE_RULES_DIR,
-  CLAUDE_PERSONA_PREFIX,
+  CURSOR_RULES_DIR,
+  WINDSURF_RULES_DIR,
+  AGY_RULES_DIR,
+  MULTI_FILE_PERSONA_PREFIX,
   README_PATH,
   README_MARKER_START,
 } from '../constants.js';
@@ -37,13 +40,27 @@ export async function handleStatus(options: { cwd?: string }): Promise<void> {
     installed.set(name, targets);
   }
 
-  // Check Claude
-  const claudeDir = join(cwd, CLAUDE_RULES_DIR);
-  const claudePersonas = await scanClaudeDir(claudeDir);
-  for (const name of claudePersonas) {
-    const targets = installed.get(name) ?? new Set();
-    targets.add('claude');
-    installed.set(name, targets);
+  // Check Multi-file targets
+  const multiTargets = [
+    { dir: CLAUDE_RULES_DIR, id: 'claude' },
+    { dir: CURSOR_RULES_DIR, id: 'cursor' },
+    { dir: WINDSURF_RULES_DIR, id: 'windsurf' },
+    { dir: AGY_RULES_DIR, id: 'agy' },
+  ];
+  
+  const multiStats = new Map<string, { personas: string[], count: number }>();
+
+  for (const { dir, id } of multiTargets) {
+    const targetDir = join(cwd, dir);
+    const personas = await scanMultiDir(targetDir);
+    for (const name of personas) {
+      const targets = installed.get(name) ?? new Set();
+      targets.add(id);
+      installed.set(name, targets);
+    }
+    if (personas.length > 0) {
+      multiStats.set(dir, { personas, count: await getMultiFileCount(targetDir) });
+    }
   }
 
   // Check README
@@ -81,10 +98,9 @@ export async function handleStatus(options: { cwd?: string }): Promise<void> {
     );
   }
 
-  if (claudePersonas.length > 0) {
-    const claudeFileCount = await getClaudeFileCount(claudeDir);
+  for (const [dir, stats] of multiStats) {
     console.log(
-      `  ${pc.green('✓')} ${pc.dim(`${CLAUDE_RULES_DIR}/`.padEnd(38))} (${claudeFileCount} files)`
+      `  ${pc.green('✓')} ${pc.dim(`${dir}/`.padEnd(38))} (${stats.count} files)`
     );
   }
 
@@ -121,7 +137,7 @@ async function scanSingleFile(filePath: string): Promise<string[]> {
   return names;
 }
 
-async function scanClaudeDir(dirPath: string): Promise<string[]> {
+async function scanMultiDir(dirPath: string): Promise<string[]> {
   if (!(await fileExists(dirPath))) return [];
 
   try {
@@ -129,7 +145,7 @@ async function scanClaudeDir(dirPath: string): Promise<string[]> {
     const personaNames = new Set<string>();
 
     for (const entry of entries) {
-      if (entry.startsWith(CLAUDE_PERSONA_PREFIX) && entry.endsWith('.md')) {
+      if (entry.startsWith(MULTI_FILE_PERSONA_PREFIX) && (entry.endsWith('.md') || entry.endsWith('.mdc'))) {
         // persona-developer.md → developer
         // persona-developer-workflows.md → developer
         const match = entry.match(/^persona-([^-]+)/);
@@ -145,11 +161,11 @@ async function scanClaudeDir(dirPath: string): Promise<string[]> {
   }
 }
 
-async function getClaudeFileCount(dirPath: string): Promise<number> {
+async function getMultiFileCount(dirPath: string): Promise<number> {
   try {
     const entries = await readdir(dirPath);
     return entries.filter(
-      (e) => e.startsWith(CLAUDE_PERSONA_PREFIX) || e.startsWith('_persona')
+      (e) => e.startsWith(MULTI_FILE_PERSONA_PREFIX) || e.startsWith('_persona')
     ).length;
   } catch {
     return 0;
