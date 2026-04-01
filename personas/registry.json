@@ -1,0 +1,68 @@
+{
+  "version": "1.0.0",
+  "personas": [
+    {
+      "name": "developer",
+      "description": "Senior full-stack developer — clean code, SOLID, testing, performance",
+      "category": "core",
+      "tags": ["code-quality", "testing", "performance", "clean-code"],
+      "version": "1.0.0"
+    },
+    {
+      "name": "architect",
+      "description": "System architect — scalability, design patterns, trade-off analysis",
+      "category": "core",
+      "tags": ["architecture", "scalability", "design-patterns", "documentation"],
+      "version": "1.0.0"
+    },
+    {
+      "name": "qa",
+      "description": "QA engineer — testing strategies, edge cases, validation, reliability",
+      "category": "core",
+      "tags": ["testing", "edge-cases", "validation", "reliability"],
+      "version": "1.0.0"
+    },
+    {
+      "name": "designer",
+      "description": "UI/UX-aware developer — accessibility, responsive design, component APIs",
+      "category": "core",
+      "tags": ["accessibility", "responsive", "design-systems", "ux"],
+      "version": "1.0.0"
+    },
+    {
+      "name": "devops",
+      "description": "DevOps/SRE — CI/CD, infrastructure, monitoring, reliability engineering",
+      "category": "core",
+      "tags": ["ci-cd", "infrastructure", "monitoring", "reliability"],
+      "version": "1.0.0"
+    },
+    {
+      "name": "security",
+      "description": "Security engineer — OWASP, auth, input validation, dependency auditing",
+      "category": "core",
+      "tags": ["security", "owasp", "authentication", "vulnerability"],
+      "version": "1.0.0"
+    },
+    {
+      "name": "fintech",
+      "description": "Financial technology — compliance, precision arithmetic, audit trails",
+      "category": "domain",
+      "tags": ["compliance", "financial", "precision", "audit"],
+      "version": "1.0.0"
+    },
+    {
+      "name": "healthtech",
+      "description": "Healthcare technology — HIPAA, data privacy, patient safety",
+      "category": "domain",
+      "tags": ["hipaa", "privacy", "healthcare", "compliance"],
+      "version": "1.0.0"
+    },
+    {
+      "name": "gamedev",
+      "description": "Game development — ECS patterns, performance, real-time systems, asset pipelines",
+      "category": "domain",
+      "tags": ["performance", "real-time", "ecs", "game-engine"],
+      "version": "1.0.0"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+src/
+tests/
+tsconfig.json
+tsup.config.ts
+.gitignore
+.DS_Store
+*.tsbuildinfo
+coverage/
+.github/

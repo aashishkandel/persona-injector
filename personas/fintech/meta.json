@@ -1,0 +1,1 @@
+{"name":"fintech","version":"1.0.0","category":"domain","description":"Financial technology — compliance, precision arithmetic, audit trails","tags":["compliance","financial","precision","audit"],"compatibleWith":["developer","architect","security","qa"],"conflictsWith":[],"fileScopes":{"claude":null,"copilot":null},"sections":["persona","workflows","checklists","anti-patterns"]}

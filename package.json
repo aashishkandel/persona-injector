@@ -1,0 +1,62 @@
+{
+  "name": "persona-injector",
+  "version": "1.0.0",
+  "description": "Inject domain-specific AI personas into your repo for GitHub Copilot, Claude Code & more. Workflow-embedded context systems with checklists, anti-patterns, and file-scoped rules.",
+  "type": "module",
+  "bin": {
+    "persona-injector": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "personas",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "prepublishOnly": "npm run build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "keywords": [
+    "ai",
+    "persona",
+    "copilot",
+    "claude",
+    "cursor",
+    "windsurf",
+    "cline",
+    "cli",
+    "developer-tools",
+    "ai-context",
+    "code-assistant"
+  ],
+  "author": "Aashish Kandel",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aashishkandel/persona-injector.git"
+  },
+  "homepage": "https://github.com/aashishkandel/persona-injector#readme",
+  "bugs": {
+    "url": "https://github.com/aashishkandel/persona-injector/issues"
+  },
+  "dependencies": {
+    "commander": "^14.0.3",
+    "picocolors": "^1.1.1",
+    "yocto-spinner": "^1.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
+  }
+}

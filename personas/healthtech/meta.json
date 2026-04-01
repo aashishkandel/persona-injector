@@ -1,0 +1,1 @@
+{"name":"healthtech","version":"1.0.0","category":"domain","description":"Healthcare technology — HIPAA, data privacy, patient safety","tags":["hipaa","privacy","healthcare","compliance"],"compatibleWith":["developer","architect","security","qa"],"conflictsWith":[],"fileScopes":{"claude":null,"copilot":null},"sections":["persona","workflows","checklists","anti-patterns"]}
