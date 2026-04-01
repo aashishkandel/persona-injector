@@ -1,4 +1,4 @@
-// ── Type Definitions for ai-personas ──
+// ── Type Definitions for AI-Personas ──
 
 export interface PersonaMeta {
 	name: string;

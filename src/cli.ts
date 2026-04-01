@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-// ── ai-personas CLI ──
+// ── AI-Personas CLI ──
 // Inject domain-specific AI personas into your repo for Copilot, Claude Code & more.
 
 import { Command } from "commander";
