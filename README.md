@@ -1,8 +1,23 @@
-# AI-Personas
+<div align="center">
+  <img src="/Users/aashishkandel/.gemini/antigravity/brain/0708ab81-9575-45d4-b68e-189b30ac7916/ai_personas_banner_terminal_small_v3_1775064060147.png" width="100%" alt="AI-Personas Banner" />
 
-> Inject domain-specific AI personas into your repo for GitHub Copilot, Claude Code & more.
+  # AI-Personas
+  
+  [![NPM version](https://img.shields.io/npm/v/ai-personas?color=cb3837&style=for-the-badge)](https://www.npmjs.com/package/ai-personas)
+  [![Build Status](https://img.shields.io/github/actions/workflow/status/aashishkandel/ai-personas/ci.yml?branch=main&style=for-the-badge)](https://github.com/aashishkandel/ai-personas/actions)
+  [![License](https://img.shields.io/badge/license-MIT-blue?style=for-the-badge)](LICENSE)
+  [![Node Version](https://img.shields.io/badge/node-%3E%3D22-green?style=for-the-badge)](package.json)
 
-**Zero-overhead, workflow-embedded context systems** with checklists, anti-patterns, decision trees, and file-scoped rules — so your AI assistant thinks like a Senior Developer, Architect, QA Engineer, Security Expert, or domain specialist.
+  **Inject domain-specific expertise into your favorite AI coding assistants.**
+</div>
+
+---
+
+### **Overview**
+
+**AI-Personas** is a zero-overhead, workflow-embedded context system designed to bridge the "Senior Context Gap" in generic AI models. It ships with deeply-structured persona packages—including checklists, anti-patterns, and decision trees—so your AI assistant thinks like a specialized expert, not just a general-purpose autocomplete.
+
+Whether you use **GitHub Copilot**, **Claude Code**, **Windsurf**, or **Cursor**, AI-Personas surgical-injects the metadata needed for your AI to adhere to top-tier engineering standards natively.
 
 ---
 
@@ -16,6 +31,35 @@ Generic AI coding assistants (Copilot, Cursor, Windsurf, Claude Code) lack domai
 - **Anti-patterns** that experienced engineers catch immediately
 
 **AI-Personas** solves this by installing deeply-structured persona files that your AI reads natively — no orchestrator, no custom commands, no overhead.
+
+---
+
+### **How it Works**
+
+AI-Personas uses a surgical injection system that understands the specific rule formats of leading AI tools.
+
+```mermaid
+graph TD
+    subgraph Registry
+        R[Persona Registry] -->|Templates| CM[Composition Engine]
+    end
+
+    subgraph Logic
+        CM -->|Unified Markdown| IJ[Multi-Target Injector]
+    end
+
+    subgraph Targets
+        IJ --> CP[GitHub Copilot]
+        IJ --> CC[Claude Code / Windsurf]
+        IJ --> CR[Cursor .mdc]
+        IJ --> UN[Universal AI_PERSONA.md]
+    end
+
+    style R fill:#1e1e1e,stroke:#00d8ff,stroke-width:2px,color:#fff
+    style CM fill:#1e1e1e,stroke:#00d8ff,stroke-width:2px,color:#fff
+    style IJ fill:#1e1e1e,stroke:#00d8ff,stroke-width:2px,color:#fff
+```
+
 
 ---
 
@@ -53,24 +97,24 @@ Once installed, just open GitHub Copilot Chat, open Windsurf, or run `claude` in
 
 ## Available Personas 🎭
 
-### Core Roles
+### **Core Roles** 🧩
 
-| Persona | Description |
-|---------|-------------|
-| `developer` | Senior full-stack developer — SOLID, clean code, testing, performance |
-| `architect` | System architect — scalability, design patterns, ADRs, trade-off analysis |
-| `qa` | QA engineer — test strategies, edge case discovery, validation, reliability |
-| `designer` | UI/UX-aware developer — accessibility (WCAG), responsive design, component APIs |
-| `devops` | DevOps/SRE — CI/CD, infrastructure-as-code, monitoring, incident response |
-| `security` | Security engineer — OWASP Top 10, auth, input validation, dependency auditing |
+| Role | Badge | Logic Focus | Key Expert Guidance |
+|:---|:---:|:---|:---|
+| `developer` | 💻 | Clean Code | SOLID principles, DRY, performant ESM, unit testing |
+| `architect` | 🏛️ | Scalability | System design, ADRs, trade-off analysis, patterns |
+| `qa` | 🧪 | Reliability | Test strategies, edge cases, validation, reliability |
+| `designer` | 🎨 | UX/UI | Accessibility (WCAG), responsive design, component APIs |
+| `devops` | 🚀 | CI/CD | Infrastructure-as-code, monitoring, incident response |
+| `security` | 🔒 | Protection | OWASP Top 10, auth, input validation, auditing |
 
-### Domain Verticals
+### **Domain Verticals** 🏢
 
-| Persona | Description |
-|---------|-------------|
-| `fintech` | Financial technology — precision arithmetic, audit trails, PCI-DSS, AML/KYC |
-| `healthtech` | Healthcare technology — HIPAA compliance, PHI protection, consent management |
-| `gamedev` | Game development — ECS patterns, frame budgets, object pooling, asset pipelines |
+| Industry | Persona | Logic Focus | Key Expert Guidance |
+|:---|:---|:---|:---|
+| **Finance** | `fintech` | Accuracy | Precision arithmetic, audit trails, PCI-DSS, AML/KYC |
+| **Health** | `healthtech` | Privacy | HIPAA compliance, PHI protection, consent management |
+| **Gaming** | `gamedev` | Loops | ECS patterns, frame budgets, asset pipelines |
 
 ---
 
@@ -87,14 +131,14 @@ Each persona is more than a simple markdown file. It's a **structured context pa
 
 ### Where Files Go
 
-| Target | Location | Format |
-|--------|----------|--------|
-| **GitHub Copilot** | `.github/copilot-instructions.md` | Single file with marker-based sections |
-| **Claude Code** | `.claude/rules/persona-*.md` | Individual rule files with `paths:` scoping |
-| **Windsurf** | `.windsurf/rules/persona-*.md` | Multi-file rule deployment |
-| **Cursor** | `.cursor/rules/persona-*.mdc` | Multi-file deployment with `.mdc` format |
-| **Antigravity (Agy)** | `.agents/rules/persona-*.md` | Rule-based agent configuration |
-| **Universal** | `AI_PERSONA.md` | Combined file for any AI tool |
+| Tool | Target Path | Rule Format |
+|:---|:---|:---|
+| **GitHub Copilot** | `.github/copilot-instructions.md` | Single file (Multi-Persona Merging) |
+| **Claude Code** | `.claude/rules/persona-*.md` | Multi-file (Native `paths:` scoping) |
+| **Windsurf** | `.windsurf/rules/persona-*.md` | Multi-file deployment |
+| **Cursor** | `.cursor/rules/persona-*.mdc` | **High-performance `.mdc` format** |
+| **Antigravity** | `.agents/rules/persona-*.md` | Agent-native rule configuration |
+| **Universal** | `AI_PERSONA.md` | Fallback for any AI tool |
 
 ---
 
@@ -158,47 +202,32 @@ This ensures the `developer` persona activates when editing code files, but rema
 
 ---
 
-## Commands Reference 💻
+### **Commands Reference** 💻
 
-### `install [personas...] [options]`
-
-| Option | Description |
-|--------|-------------|
-| `-a, --all` | Install all available personas |
-| `-f, --force` | Overwrite existing files instead of merging |
-| `-t, --targets <targets>` | Comma-separated targets: `copilot,claude,universal` |
-| `--dry-run` | Preview without writing files |
-
-### `list [options]`
-
-| Option | Description |
-|--------|-------------|
-| `-j, --json` | Output as JSON |
-| `-v, --verbose` | Show tags and details |
-
-### `remove [personas...] [options]`
-
-| Option | Description |
-|--------|-------------|
-| `-a, --all` | Remove all installed personas |
-
-### `info <persona>`
-
-Preview a persona's full markdown content natively in your terminal before installing.
-
-### `status`
-
-Show currently configured personas, active overlap schemas, and target files detected in the project.
+| Command | Args | Description |
+|:---|:---|:---|
+| `install` | `[personas...]` | Install one or more experts into the current project |
+| `list` | | List all available personas with detailed tags |
+| `info` | `<persona>` | Preview a persona's full guide in the terminal |
+| `status` | | Show active personas and detected target paths |
+| `remove` | `[personas...]` | Surgical remove personas from all configured paths |
 
 ---
 
-## Requirements
+### **Requirements**
 
-- **Node.js** 18+ (uses native `fetch` and ESM modules)
-- **npm** 7+ (for npx execution execution)
+- **Node.js** 22.0.0+ 
+- **npm** 7.0.0+
 
 ---
 
-## License
+### **Community & Support**
 
-MIT — [Aashish Kandel](https://github.com/aashishkandel)
+- **Bugs & Features**: [GitHub Issues](https://github.com/aashishkandel/ai-personas/issues)
+- **Author**: [Aashish Kandel](https://github.com/aashishkandel)
+- **License**: [MIT](LICENSE)
+
+<div align="center">
+  <br />
+  Built with ❤️ for the AI Engineering community.
+</div>
