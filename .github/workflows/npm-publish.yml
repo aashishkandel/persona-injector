@@ -22,9 +22,6 @@ jobs:
         with:
           node-version: '22.x'
 
-      - name: Upgrade npm
-        run: npm install -g npm@11
-
       - name: Install dependencies
         run: npm ci
 
@@ -39,4 +36,4 @@ jobs:
 
       - name: Publish to npm
         # --provenance links the publish to this specific GitHub Action run
-        run: npm publish --provenance --access public
+        run: npx npm@11 publish --provenance --access public
