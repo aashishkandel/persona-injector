@@ -1,8 +1,9 @@
 {
 	"name": "ai-personas",
-	"version": "1.0.0",
-	"description": "Inject domain-specific AI personas into your repo for GitHub Copilot, Claude Code & more. Workflow-embedded context systems with checklists, anti-patterns, and file-scoped rules.",
+	"version": "1.0.1",
+	"description": "Inject domain-specific expertise into your favorite AI coding assistants. Run: npx ai-personas install. Workflow-embedded context systems with checklists, anti-patterns, and file-scoped rules.",
 	"type": "module",
+	"preferGlobal": true,
 	"bin": {
 		"ai-personas": "./dist/cli.js"
 	},

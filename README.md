@@ -13,6 +13,20 @@
 
 ---
 
+## Quick Start 🚀
+
+No global installation required. Just use `npx` directly in any repository to start injecting expertise:
+
+```bash
+# Install specific personas
+npx ai-personas install developer security
+
+# See what's available
+npx ai-personas list
+```
+
+---
+
 ### **Overview**
 
 **AI-Personas** is a zero-overhead, workflow-embedded context system designed to bridge the "Senior Context Gap" in generic AI models. It ships with deeply-structured persona packages—including checklists, anti-patterns, and decision trees—so your AI assistant thinks like a specialized expert, not just a general-purpose autocomplete.
@@ -60,38 +74,6 @@ graph TD
     style IJ fill:#1e1e1e,stroke:#00d8ff,stroke-width:2px,color:#fff
 ```
 
-
----
-
-## Quick Start 🚀
-
-No global installation or bloat required. Just use `npx` directly in any repository:
-
-```bash
-# Install specific personas
-npx ai-personas install developer architect qa
-
-# Install all personas
-npx ai-personas install --all
-
-# See what's available
-npx ai-personas list
-
-# Preview a persona before installing
-npx ai-personas info security
-
-# Check what's installed
-npx ai-personas status
-
-# Remove a specific persona
-npx ai-personas remove developer
-
-# Remove all
-npx ai-personas remove --all
-```
-
-**What to do next?**
-Once installed, just open GitHub Copilot Chat, open Windsurf, or run `claude` in your terminal. They will automatically detect and ingest the newly injected persona files without any extra configuration!
 
 ---
 
