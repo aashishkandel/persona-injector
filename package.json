@@ -1,6 +1,6 @@
 {
 	"name": "ai-personas",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Inject domain-specific expertise into your favorite AI coding assistants. Run: npx ai-personas install. Workflow-embedded context systems with checklists, anti-patterns, and file-scoped rules.",
 	"type": "module",
 	"preferGlobal": true,
